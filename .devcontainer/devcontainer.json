@@ -5,7 +5,9 @@
     "remoteUser": "${localEnv:USER}",
     "features": {
         "./local-features/fixes": {},
-        "ghcr.io/devcontainers/features/common-utils:2": {},
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "upgradePackages": false
+        },
         "ghcr.io/devcontainers/features/docker-in-docker:4": {},
         "ghcr.io/eliises/devcontainer-features/devcontainers-cli:1": {},
         "ghcr.io/ridgerun/devcontainer-features/glib:0": {

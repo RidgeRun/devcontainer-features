@@ -38,6 +38,7 @@ apt install -yq \
   python3-packaging \
   python3-gi \
   gobject-introspection \
+  libatomic1 \
   libunwind-dev
 
 python3 -m pip install --break-system-packages 'setuptools==68.1.2'

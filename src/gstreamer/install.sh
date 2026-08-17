@@ -40,6 +40,7 @@ apt install -yq \
   bison \
   flex \
   pkg-config \
+  libatomic1 \
   libunwind-dev \
   libdw-dev \
   libpython3-dev \
