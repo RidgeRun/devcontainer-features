@@ -4,6 +4,70 @@ This feature builds shared libraries for NVIDIA DeepStream and is only useful fo
 
 > An image with CUDA and TensorRT is required for this feature.
 
+DeepStream 9.x uses NVIDIA's GitHub monorepo build and requires Ubuntu 24.04.
+The `sbsa` platform is supported only for DeepStream 9.x and newer. Legacy
+DeepStream 6.3–8.0 use the NGC SDK tarball and support `x86_64` and `jetson`.
+
+Set `dsVersion` to `latest` to clone NVIDIA's current `main` branch. The
+upstream build script selects the current SDK version for that branch.
+
+## Build examples
+
+### Legacy DeepStream 7.1
+
+DeepStream 6.3–8.0 is downloaded from NVIDIA NGC and built from the SDK's
+legacy Makefiles.
+
+```json
+"ghcr.io/ridgerun/devcontainer-features/deepstream:0": {
+    "dsVersion": "7.1",
+    "platform": "x86_64",
+    "cudaVersion": "12.8"
+}
+```
+
+### DeepStream 9.1 on x86_64
+
+DeepStream 9.x is cloned from NVIDIA's GitHub monorepo and built with its
+official `build/build.sh` flow. The build script also installs the matching
+proprietary runtime assets.
+
+```json
+"ghcr.io/ridgerun/devcontainer-features/deepstream:0": {
+    "dsVersion": "9.1",
+    "platform": "x86_64",
+    "cudaVersion": "13.2"
+}
+```
+
+### DeepStream 9.x on SBSA
+
+Use `sbsa` for a DeepStream 9.x SBSA container. NVIDIA's build flow detects
+SBSA from the container architecture and does not install bare-metal SDK
+artifacts; use an NVIDIA DeepStream SBSA image with the runtime already
+present.
+
+```json
+"ghcr.io/ridgerun/devcontainer-features/deepstream:0": {
+    "dsVersion": "9.1",
+    "platform": "sbsa",
+    "cudaVersion": "13.2"
+}
+```
+
+### Latest DeepStream development build
+
+Use `latest` when you want the current NVIDIA DeepStream `main` branch rather
+than a pinned release tag.
+
+```json
+"ghcr.io/ridgerun/devcontainer-features/deepstream:0": {
+    "dsVersion": "latest",
+    "platform": "x86_64",
+    "cudaVersion": "13.2"
+}
+```
+
 For example, `nvcr.io/nvidia/tensorrt:25.03-py3` from NVIDIA NGC is available.
 
 ### Enable GPU passthrough

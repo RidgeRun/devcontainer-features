@@ -9,21 +9,28 @@
     "options": {
         "dsVersion" : {
             "type": "string",
-            "enum": [
+            "proposals": [
+                "latest",
+                "9.1",
+                "9.0",
+                "8.0",
                 "7.1",
                 "7.0",
                 "6.4",
                 "6.3"
             ],
-            "default": "7.1"
+            "default": "7.1",
+            "description": "DeepStream version. Use latest to build NVIDIA's current main branch; legacy support is provided for 6.3–8.0 and 9.x versions use NVIDIA's GitHub monorepo build."
         },
         "platform" : {
             "type": "string",
             "enum": [
                 "x86_64",
-                "jetson"
+                "jetson",
+                "sbsa"
             ],
-            "default": "x86_64"
+            "default": "x86_64",
+            "description": "Target platform. sbsa is supported only for DeepStream 9.x and newer."
         },
         "cudaVersion" : {
             "type": "string",
