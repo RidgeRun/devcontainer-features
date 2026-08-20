@@ -16,7 +16,7 @@ Add a GStreamer build to a devcontainer
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
 | gstVersion | The GStreamer version to build | string | undefined |
-| buildGlib | Whether to build GLib from fallback sources | boolean | true |
+| buildGlib | Whether to build GLib from fallback sources | boolean | false |
 | buildType | The type of build to perform | string | debug |
 | tests | Whether to build the tests or not | boolean | false |
 | examples | Whether to build the examples or not | boolean | false |

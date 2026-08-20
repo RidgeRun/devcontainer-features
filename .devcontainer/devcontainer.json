@@ -1,20 +1,30 @@
 {
     "name": "RidgeRun Devcontainer Features",
-    "image": "ubuntu:24.04",
+    "image": "nvcr.io/nvidia/deepstream:9.1-triton-sbsa-dgx-spark",
     "containerUser": "${localEnv:USER}",
     "remoteUser": "${localEnv:USER}",
     "features": {
         "./local-features/fixes": {},
-        "ghcr.io/devcontainers/features/common-utils:2": {},
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "upgradePackages": false
+        },
         "ghcr.io/devcontainers/features/docker-in-docker:4": {},
         "ghcr.io/eliises/devcontainer-features/devcontainers-cli:1": {},
+        "ghcr.io/ridgerun/devcontainer-features/glib:0": {
+            "glibVersion": "2.80.0"
+        },
         "ghcr.io/ridgerun/devcontainer-features/gstreamer:0": {
-            "gstVersion": "1.26"
+            "gstVersion": "1.24"
         },
         "ghcr.io/ridgerun/devcontainer-features/ridgerun-oss:0": {},
         "ghcr.io/ridgerun/devcontainer-features/ridgerun-proprietary:0": {},
         "ghcr.io/ridgerun/devcontainer-features/devenv:0": {
             "display": "${localEnv:DISPLAY}"
+        },
+        "ghcr.io/ridgerun/devcontainer-features/deepstream:0": {
+            "dsVersion": "9.0",
+            "platform": "jetson",
+            "cudaVersion": "13.0"
         }
     }
 }

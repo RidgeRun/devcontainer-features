@@ -17,6 +17,7 @@ Add a GLib build to a devcontainer
 |-----|-----|-----|-----|
 | glibVersion | The GLib version to build | string | undefined |
 | buildType | The type of build to perform | string | debug |
+| introspection | Whether to build GObject Introspection data | boolean | true |
 | extraArgs | Any additional meson args to pass to the configuration step | string | undefined |
 
 

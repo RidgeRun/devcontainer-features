@@ -24,6 +24,7 @@ function boolean_to_feature() {
 
 check_option "$GLIBVERSION" "libVersion"
 check_option "$BUILDTYPE" "buildType"
+check_option "$INTROSPECTION" "introspection"
 
 apt update -yq
 DEBIAN_FRONTEND=noninteractive \
@@ -33,10 +34,14 @@ apt install -yq \
   ninja-build \
   pkg-config \
   python3 \
+  python3-pip \
   python3-packaging \
   python3-gi \
   gobject-introspection \
+  libatomic1 \
   libunwind-dev
+
+python3 -m pip install --break-system-packages 'setuptools==68.1.2'
 
 mkdir -p /usr/src
 cd /usr/src
@@ -56,7 +61,7 @@ meson setup builddir \
   -Dglib_debug=enabled \
   -Dglib_assert=true \
   -Dglib_checks=true \
-  -Dintrospection=enabled \
+  -Dintrospection=$(boolean_to_feature "$INTROSPECTION") \
   $EXTRAARGS
 
 meson compile -C builddir
